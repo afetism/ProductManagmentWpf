@@ -2,7 +2,7 @@
 
 namespace MyApp.Data.Models.EntityModel;
 
-public class OrderProduct:BaseEntity
+public class OrderItem
 {
     public int OrderId { get; set; }
     public int ProductId { get; set; }

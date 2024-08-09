@@ -10,12 +10,17 @@ internal class MyAppDbContext:DbContext
 {
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
-		optionsBuilder.UseSqlServer("Server=tcp:fbmstest.database.windows.net,1433;Initial Catalog=AfetDb;Persist Security Info=False;User ID=fbmsadmin;Password=Admin12!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
-			.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking) ;  
-
+		optionsBuilder.UseSqlServer("Server=DESKTOP-0P1DC60\\SQLEXPRESS;Initial Catalog=AfetDb;Integrated Security=True;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;")
+			.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 	}
 
-    public DbSet<Category> Categories { get; set; }
+
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		modelBuilder.Entity<OrderItem>()
+					.HasKey(e => new { e.OrderId, e.ProductId });
+	}
+	public DbSet<Category> Categories { get; set; }
 	public DbSet<Product> Products { get; set; }
 	public DbSet<Order> Orders { get; set; }
 	public DbSet<LikedItem> LikedItems { get; set; }
@@ -25,7 +30,7 @@ internal class MyAppDbContext:DbContext
 	public DbSet<CreditCard> CreditCarts { get; set; }
 	public DbSet<PhotoProduct> PhotoProducts { get; set; }
     public DbSet<PhotoUser> PhotoUsers { get; set; }
+    public DbSet<OrderItem> OrderItems { get; set; }
 
-	
 
 }

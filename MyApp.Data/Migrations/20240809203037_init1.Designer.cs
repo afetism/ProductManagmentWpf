@@ -12,8 +12,8 @@ using MyApp.Data.Data;
 namespace MyApp.Data.Migrations
 {
     [DbContext(typeof(MyAppDbContext))]
-    [Migration("20240808182553_mig1")]
-    partial class mig1
+    [Migration("20240809203037_init1")]
+    partial class init1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -161,6 +161,24 @@ namespace MyApp.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("MyApp.Data.Models.EntityModel.OrderItem", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("MyApp.Data.Models.EntityModel.PhotoProduct", b =>
@@ -344,11 +362,32 @@ namespace MyApp.Data.Migrations
 
             modelBuilder.Entity("MyApp.Data.Models.EntityModel.Order", b =>
                 {
-                    b.HasOne("MyApp.Data.Models.EntityModel.User", null)
+                    b.HasOne("MyApp.Data.Models.EntityModel.User", "User")
                         .WithMany("History")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MyApp.Data.Models.EntityModel.OrderItem", b =>
+                {
+                    b.HasOne("MyApp.Data.Models.EntityModel.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyApp.Data.Models.EntityModel.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("MyApp.Data.Models.EntityModel.PhotoProduct", b =>
