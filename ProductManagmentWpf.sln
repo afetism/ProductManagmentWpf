@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagmentAdminPanel"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Data", "MyApp.Data\MyApp.Data.csproj", "{98EBF8EE-41A1-48C5-8BB9-628308E5A547}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagmentUser", "ProductManagmentUser\ProductManagmentUser.csproj", "{BAE06C32-2B94-42D6-8CCC-F91D73EBCEAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{98EBF8EE-41A1-48C5-8BB9-628308E5A547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98EBF8EE-41A1-48C5-8BB9-628308E5A547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98EBF8EE-41A1-48C5-8BB9-628308E5A547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAE06C32-2B94-42D6-8CCC-F91D73EBCEAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE06C32-2B94-42D6-8CCC-F91D73EBCEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE06C32-2B94-42D6-8CCC-F91D73EBCEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAE06C32-2B94-42D6-8CCC-F91D73EBCEAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

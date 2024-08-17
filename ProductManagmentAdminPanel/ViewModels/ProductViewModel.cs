@@ -154,7 +154,7 @@ class ProductViewModel : BaseViewModel
 				if (result==MessageBoxResult.Yes)
 				{
 					ProductDb.Delete(product);
-					ProductDb.SaveChanges();
+				
 					Products=new(ProductDb.GetAll());
 					var productId = product.Id;
 					var photoList =PhotoProductDb.GetAll(p=>p.ProductId == productId);
@@ -163,7 +163,8 @@ class ProductViewModel : BaseViewModel
 
 						PhotoProductDb.Delete(i);
 					}
-					PhotoProductDb.SaveChanges();
+					ProductDb.SaveChanges();
+					//PhotoProductDb.SaveChanges();
 
 					
 				}
@@ -214,8 +215,9 @@ class ProductViewModel : BaseViewModel
 				{
 					
 				}
-				PhotoProductDb.SaveChanges();
 				ProductDb.SaveChanges();
+			//	PhotoProductDb.SaveChanges();
+				
 				
 				isSaved = true;
 				Products=new ObservableCollection<Product>(ProductDb.GetAll());
@@ -241,7 +243,7 @@ class ProductViewModel : BaseViewModel
 	{
 		try
 		{
-
+			Categories= new ObservableCollection<Category>(CategoryDb.GetAll());
 			if (obj is null || obj is not Product objAsProduct)
 				ProductData = new();
 			else
