@@ -11,5 +11,5 @@ public class PhotoUser:BaseEntity
 	public string FileExtension { get; set; } = null!;
 	public decimal Size { get; set; }
 	public int UserId { get; set; }
-	public User User { get; set; } = null!;
+	public virtual User User { get; set; } = null!;
 }

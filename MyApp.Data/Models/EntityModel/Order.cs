@@ -6,6 +6,6 @@ public class Order:BaseEntity
 {
     public DateOnly Date { get; set; }
     public int UserId { get; set; }
-    public User User { get; set; } = null!;
-    public IEnumerable<Product> Products { get; } = [];
+    public virtual User User { get; set; } = null!;
+    public virtual IEnumerable<Product> Products { get; } = [];
 }

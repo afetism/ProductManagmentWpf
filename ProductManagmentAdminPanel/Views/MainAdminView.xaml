@@ -1,0 +1,129 @@
+﻿<Window x:Class="ProductManagmentAdminPanel.Views.MainAdminView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductManagmentAdminPanel.Views"
+        xmlns:Menue="clr-namespace:ProductManagmentAdminPanel.Helpers"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainView" Height="500"
+        Width="1200"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Border Background="#212529"
+             CornerRadius="20" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid HorizontalAlignment="Left">
+
+
+                    <Border Background="#272B2F"
+                     CornerRadius="20,0,0,20"  />
+                    <StackPanel 
+              Width="215">
+                        <Image Source="/assets/pngegg.png" Margin="10" Width="100"></Image>
+                        <!--HomeCommand-->
+                        <Menue:Btn Style="{StaticResource BtnStyle}"
+                         Command="{Binding HomeCommand}"
+                         IsChecked="True" >
+
+
+                            <Grid>
+
+                                <materialDesign:PackIcon Kind="Home" Style="{StaticResource IconPick}" />
+
+                                <TextBlock Text="Home"
+                                Style="{StaticResource Text_Style}" />
+
+                            </Grid>
+                        </Menue:Btn>
+
+                        <!--Category-->
+
+                        <Menue:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding CategoryCommand}"
+                          IsChecked="True" >
+                            <Grid>
+
+                                <materialDesign:PackIcon Kind="ViewDashboardOutline"  Style="{StaticResource IconPick}" />
+                                <TextBlock Text="Category"
+                             Style="{StaticResource Text_Style}" />
+
+                            </Grid>
+                        </Menue:Btn>
+
+                        <!--Product-->
+
+                        <Menue:Btn Style="{StaticResource BtnStyle}"
+                        Command="{Binding ProductCommand}"
+                         IsChecked="True" >
+                            <Grid>
+
+
+                                <materialDesign:PackIcon Kind="FoodApple"   Style="{StaticResource IconPick}" />
+                                <TextBlock Text="Product"
+                                  Style="{StaticResource Text_Style}" />
+
+                            </Grid>
+
+                        </Menue:Btn>
+
+                        <Menue:Btn Style="{StaticResource BtnStyle}"
+                        Command="{Binding HomeCommand}"
+                         IsChecked="True" >
+                            <Grid>
+
+                                <materialDesign:PackIcon Kind="AccountGroup" Style="{StaticResource IconPick}"  />
+
+                                <TextBlock Text="Show User"
+                                 Style="{StaticResource Text_Style}" />
+
+                            </Grid>
+
+                        </Menue:Btn>
+
+
+                        <Menue:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding HomeCommand}"
+                           IsChecked="True" >
+                            <Grid>
+
+
+                                <materialDesign:PackIcon Kind="ImageMultiple" Style="{StaticResource IconPick}" />
+                                <TextBlock Text="ProductPhoto" Style="{StaticResource Text_Style}" />
+
+                            </Grid>
+
+                        </Menue:Btn>
+                    </StackPanel>
+
+                </Grid>
+                <Grid Grid.Column="1">
+                    <ScrollViewer>
+                        <StackPanel  Grid.Column="1">
+                            <Button x:Name="CloseApp"
+                 Style="{StaticResource ExitApp}"
+                 Click="CloseApp_Click" />
+                            <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+
+
+            </Grid>
+
+        </Grid>
+    </ScrollViewer>
+</Window>

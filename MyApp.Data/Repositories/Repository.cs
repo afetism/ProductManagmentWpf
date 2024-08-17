@@ -26,14 +26,16 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 		DbSet.Remove(entity);
 	}
 
+
+
 	public T? Get(int id)
 	{
 		return DbSet.FirstOrDefault(e => e.Id == id);
 	}
 
-	public List<T>? GetAll()
+	public IEnumerable<T>? GetAll()
 	{
-		return [.. DbSet]; // DbSet.ToList()
+		return DbSet.AsNoTracking();
 	}
 
 	public List<T>? GetAll(Expression<Func<T, bool>> predicate)
@@ -50,4 +52,6 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 	{
 		DbSet.Update(entity);
 	}
+
+	
 }

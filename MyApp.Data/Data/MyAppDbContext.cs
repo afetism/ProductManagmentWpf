@@ -9,10 +9,11 @@ namespace MyApp.Data.Data;
 internal class MyAppDbContext:DbContext
 {
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-	{
-		optionsBuilder.UseSqlServer("Server=DESKTOP-0P1DC60\\SQLEXPRESS;Initial Catalog=AfetDb;Integrated Security=True;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;")
-			.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-	}
+		=> optionsBuilder.UseLazyLoadingProxies()
+						 .UseSqlServer("Server=DESKTOP-0P1DC60\\SQLEXPRESS;Initial Catalog=AfetDb;Integrated Security=True;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;")
+						  .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+			 
+	
 
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)

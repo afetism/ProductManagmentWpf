@@ -10,5 +10,5 @@ public class PhotoProduct:BaseEntity
 	public string FileExtension { get; set; } = null!;
 	public decimal Size { get; set; }
 	public int ProductId { get; set; }
-	public Product Product { get; set; } = null!;
+	public virtual Product Product { get; set; } = null!;
 }

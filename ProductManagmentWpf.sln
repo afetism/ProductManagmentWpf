@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagmentAdminPanel", "ProductManagmentAdminPanel\ProductManagmentAdminPanel.csproj", "{1AE220E8-E009-41B2-B601-E1A18D265C2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagmentAdminPanel", "ProductManagmentAdminPanel\ProductManagmentAdminPanel.csproj", "{1AE220E8-E009-41B2-B601-E1A18D265C2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Data", "MyApp.Data\MyApp.Data.csproj", "{98EBF8EE-41A1-48C5-8BB9-628308E5A547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Data", "MyApp.Data\MyApp.Data.csproj", "{98EBF8EE-41A1-48C5-8BB9-628308E5A547}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,5 +9,5 @@ public class CreditCard : BaseEntity
 	public DateTime ExpirationDate { get; set; }
 	public string CVV { get; set; } = null!;
 	public int UserId { get; set; }
-	public User User { get; set; } = null!;
+	public virtual User User { get; set; } = null!;
 }

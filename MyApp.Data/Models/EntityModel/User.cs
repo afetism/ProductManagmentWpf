@@ -9,9 +9,9 @@ public class User:BaseEntity
     public DateOnly DateofBirth { get; set; }
     public string Email { get; set; } = null!;
 
-    public IEnumerable<Order> History { get; } = [];
+    public virtual IEnumerable<Order> History { get; } = [];
     public byte[] Password { get; set; } = null!;
     public byte[] Salt { get; set; } = null!;
-	public IEnumerable<CreditCard> CreditCards { get; } = [];
+	public virtual IEnumerable<CreditCard> CreditCards { get; } = [];
 
 }
