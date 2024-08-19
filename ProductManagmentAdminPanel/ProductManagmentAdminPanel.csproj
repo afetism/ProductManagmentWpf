@@ -9,10 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\images %282%29.jpeg" />
     <None Remove="assets\pngegg.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="assets\images (2).jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\pngegg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -26,12 +30,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyApp.Data\MyApp.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="assets\images %282%29.jpeg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
