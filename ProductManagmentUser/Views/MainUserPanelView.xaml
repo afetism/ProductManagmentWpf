@@ -88,14 +88,14 @@
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Width="200" Height="300" Background="LightGray" Margin="10">
+                        <Grid Width="200" Height="300" Background="LavenderBlush" Margin="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
                             <Image Source="{Binding Photo.Bytes, Converter={StaticResource ByteArrayToImageConverter}}"
-                           Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Width="200" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center"
                            Margin="0,20,0,0"/>
 
                             <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30"
@@ -105,9 +105,10 @@
                            
 
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,10" Orientation="Horizontal">
-                                <TextBlock Text="{Binding Price}" Background="White" Padding="5,2" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding Name}" Background="White" Padding="5,2" Margin="0,0,5,0"></TextBlock>
+                                <TextBlock Text="{Binding Price}" Background="White" Padding="5,2" Margin="0,0,5,0"/>
                                 <Button Style="{StaticResource IconButtonStyle}">
-                                    <materialDesign:PackIcon Kind="CartOutline" Width="40" Height="30" />
+                                    <materialDesign:PackIcon Kind="CartOutline" Foreground="MediumPurple" Width="40" Height="30" />
                                 </Button>
                                
                             </StackPanel>
