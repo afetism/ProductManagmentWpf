@@ -18,10 +18,4 @@
     <ProjectReference Include="..\MyApp.Data\MyApp.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Resources\bckgroundregister.jpeg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

@@ -7,6 +7,7 @@ public interface IRepository<T> where T : class
 {
 	T? Get(int id);
 	List<T>? GetAll(Expression<Func<T, bool>> predicate);
+	T? Get(Func<T, bool> predicate);
 	IEnumerable<T>? GetAll();
 	void Add(T entity);
 	void Update(T entity);

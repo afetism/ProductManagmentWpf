@@ -26,7 +26,7 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 		DbSet.Remove(entity);
 	}
 
-
+	public T? Get(Func<T, bool> predicate)=>DbSet.FirstOrDefault(predicate);
 
 	public T? Get(int id)
 	{
