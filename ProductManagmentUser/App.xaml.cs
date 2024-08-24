@@ -26,6 +26,7 @@ public partial class App : Application
 	{
 		Container.RegisterSingleton<MainViewModel>();
 		Container.RegisterSingleton<RegisterViewModel>();
+		Container.RegisterSingleton<MainUserPanelViewModel>();
 
 	}
 
@@ -33,6 +34,7 @@ public partial class App : Application
 	{
 		
          Container.RegisterSingleton<RegisterWindow>();
+		 Container.RegisterSingleton<MainUserPanelView>();
 	}
 	protected override void OnStartup(StartupEventArgs e)
 	{

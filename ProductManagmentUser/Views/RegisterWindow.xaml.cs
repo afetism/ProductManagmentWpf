@@ -10,8 +10,10 @@ public partial class RegisterWindow : Window
         public RegisterWindow()
         {
             InitializeComponent();
-		DataContext=App.Container.GetInstance<RegisterViewModel>();
-        }
+		    DataContext=App.Container.GetInstance<RegisterViewModel>();
+		if (App.Container.GetInstance<RegisterViewModel>().CloseAction == null)
+			App.Container.GetInstance<RegisterViewModel>().CloseAction = new Action(this.Close);
+	}
 
 	private void SwitchToSignUp(object sender, MouseButtonEventArgs e)
 	{

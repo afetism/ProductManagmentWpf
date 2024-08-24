@@ -10,7 +10,7 @@ public class MailService
 		var smtp = new SmtpClient("smtp.gmail.com")
 		{
 			Port = 587,
-			Credentials = new NetworkCredential("mirtalibemirli498@gmail.com", "ljgb fqte vzss ncxk"),
+			Credentials = new NetworkCredential("mirtalibemirli498@gmail.com", "aytndmgzqcukvmds"),
 			EnableSsl = true,
 		};
 

@@ -6,11 +6,13 @@ using System.Windows.Input;
 using ProductManagmentUser.Helpers;
 using ProductManagmentUser.Services;
 using MyApp.Data.Models.EntityModel;
+using ProductManagmentUser.Views;
+using MaterialDesignThemes.Wpf;
 namespace ProductManagmentUser.ViewModels;
 
 public class RegisterViewModel :BaseViewModel
 {
-
+	public Action CloseAction { get; set; }
 	public  ICommand OpenPopupCommand { get; set; }
 	public  RelayCommand VerifyCodeCommand { get; set; }
 	public  ICommand CloseVerificationPopupCommand { get; set; }
@@ -161,6 +163,9 @@ public class RegisterViewModel :BaseViewModel
 				UserDb.Add(UserData);
 				UserDb.SaveChanges();
 				MessageBox.Show("Kod doğru!", "Başarı", MessageBoxButton.OK, MessageBoxImage.Information);
+				CloseAction();
+
+				MainUserPanelView page = App.Container.GetInstance<MainUserPanelView>();
 			}
 		}
 		else
@@ -183,7 +188,10 @@ public class RegisterViewModel :BaseViewModel
 		var user = UserDb.Get(e => e.Email==Email);
 		 if(user is not null && passwordManager.VerifyPassword(user.Password,Password))
 		{
-			MessageBox.Show("hELLOR");
+			CloseAction();
+
+			MainUserPanelView page = App.Container.GetInstance<MainUserPanelView>();
+			page.ShowDialog();
 		}
 		else
 		{
@@ -193,7 +201,7 @@ public class RegisterViewModel :BaseViewModel
 
 	}
 
-	private bool CanExecuteSignUp(object parameter)
+	private bool CanExecuteSignUp(object parameter)	
 	{
 
 		return !string.IsNullOrEmpty(FirstName) &&
