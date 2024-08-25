@@ -12,6 +12,8 @@
                 <ResourceDictionary Source="Resources\ExitStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources\Crud.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources\TextBox.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Resources\Header.xaml"></ResourceDictionary>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

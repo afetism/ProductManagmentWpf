@@ -1,8 +1,5 @@
-﻿using ProductManagmentUser.Services;
-using ProductManagmentUser.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProductManagmentUser.Views
 {
 	/// <summary>
-	/// Interaction logic for MainUserPanel.xaml
+	/// Interaction logic for CartView.xaml
 	/// </summary>
-	public partial class MainUserPanelView : Window
+	public partial class CartView : Page
 	{
-		public MainUserPanelView()
+		public CartView()
 		{
 			InitializeComponent();
-			DataContext=App.Container.GetInstance<MainUserPanelViewModel>();
-		
-
 		}
 	}
 }

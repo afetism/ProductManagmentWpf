@@ -189,8 +189,10 @@ public class RegisterViewModel :BaseViewModel
 		 UserData = UserDb.Get(e => e.Email==Email);
 		 if(UserData is not null && passwordManager.VerifyPassword(UserData.Password,Password))
 		{
-			var userView = new MainUserPanelView();
-		
+			var userView = App.Container.GetInstance<MainUserPanelView>();
+			App.Container.GetInstance<MainUserPanelViewModel>().LoadProducts();
+
+
 			userView.Show();
 		}
 		else

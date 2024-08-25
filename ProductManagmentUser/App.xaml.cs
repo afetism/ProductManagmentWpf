@@ -28,7 +28,8 @@ public partial class App : Application
 		Container.RegisterSingleton<MainViewModel>();
 		Container.RegisterSingleton<RegisterViewModel>();
 		Container.RegisterSingleton<AllProductsViewModel>();
-		//Container.RegisterSingleton<MainUserPanelViewModel>();
+		Container.RegisterSingleton<CartViewModel>();
+		Container.RegisterSingleton<MainUserPanelViewModel>();
 
 	}
 
@@ -37,8 +38,8 @@ public partial class App : Application
 		
          Container.RegisterSingleton<RegisterWindow>();
 		Container.RegisterSingleton<AllProductsView>();
-		//Container.RegisterSingleton<MainUserPanelView>();
-
+		Container.RegisterSingleton<CartView>();
+		Container.RegisterSingleton<MainUserPanelView>();
 
 	}
 	protected override void OnStartup(StartupEventArgs e)

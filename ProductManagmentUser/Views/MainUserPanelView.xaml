@@ -58,7 +58,7 @@
                 <Button Style="{StaticResource IconButtonStyle}">
                     <materialDesign:PackIcon Kind="CardsHeartOutline" Width="40" Height="30" Foreground="White" />
                 </Button>
-                <Button Style="{StaticResource IconButtonStyle}">
+                <Button Style="{StaticResource IconButtonStyle}" Command="{Binding ShowCart}">
                     <materialDesign:PackIcon Kind="CartOutline" Width="40" Height="30" />
                 </Button>
                 <Button Style="{StaticResource IconButtonStyle}">

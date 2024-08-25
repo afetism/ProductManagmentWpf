@@ -12,6 +12,7 @@ public abstract class BaseViewModel : INotifyPropertyChanged
 	Dictionary<String, List<string>> Errors = new();
 	public readonly Repository<User> UserDb =new Repository<User>() { };
 	public readonly Repository<Product> ProductDb = new Repository<Product>() { };
+	public readonly Repository<Cart> CartDb = new Repository<Cart>() { };
 
 	protected void OnPropertyChanged(string propertyName)
 	  {

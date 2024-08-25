@@ -1,10 +1,12 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using MyApp.Data.Models.EntityModel;
+using ProductManagmentAdminPanel.Helpers;
 using ProductManagmentUser.Services;
 using ProductManagmentUser.Views;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ProductManagmentUser.ViewModels;
 
@@ -12,19 +14,12 @@ public class MainUserPanelViewModel:BaseViewModel
 {
 	private Page currentPage;
 	public Page CurrentPage { get => currentPage; set { currentPage=value; OnPropertyChanged(nameof(CurrentPage)); } }
-	private ObservableCollection<Product> _products;
+
 	private User currentUser = App.Container.GetInstance<RegisterViewModel>().UserData;
 	private string photoPath;
+	private ICommand showCart;
 	private readonly INavigationService navigationService;
-	public ObservableCollection<Product> Products
-	{
-		get { return _products; }
-		set
-		{
-			_products = value;
-			OnPropertyChanged(nameof(Products));
-		}
-	}
+
 	public User CurrentUser
 		{ 
 		get => currentUser; 
@@ -37,6 +32,8 @@ public class MainUserPanelViewModel:BaseViewModel
 		
 		} 
 	}
+	public ICommand ShowCart { get => showCart;
+		set { showCart=value; OnPropertyChanged(nameof(showCart)); }   }
 	public string PhotoUs { get; set; }
 
 	public string PhotoPath { get => photoPath; set { photoPath=value; OnPropertyChanged(nameof(photoPath)); } }
@@ -45,11 +42,22 @@ public class MainUserPanelViewModel:BaseViewModel
 
 		this.navigationService = navigationService;
         LoadProducts();
-    }
-    public void LoadProducts()
+		ShowCart=new RelayCommand(executeShowCart);
+
+	}
+
+	private void executeShowCart(object obj)
+	{
+
+		CurrentPage = (App.Container.GetInstance<CartView>())!;
+		CurrentPage.DataContext = App.Container.GetInstance<CartViewModel>();
+		App.Container.GetInstance<CartViewModel>().LoadCart();
+	}
+
+	public void LoadProducts()
 	{
 		   
-			Products = new ObservableCollection<Product>(ProductDb.GetAll());
+		
 		    CurrentUser=App.Container.GetInstance<RegisterViewModel>().UserData;
 		if (CurrentUser is not null && CurrentUser.PhotoUs is null)
 		{
