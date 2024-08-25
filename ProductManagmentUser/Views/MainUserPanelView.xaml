@@ -6,25 +6,38 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ProductManagmentUser.Views"
         mc:Ignorable="d"
-        Title="MainUserPanel" Height="500"
-        Width="900"
+        Title="MainUserPanel" Height="500" Width="900"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None" Background="MediumPurple">
+
     <Window.Resources>
-        
-            <local:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
-       
+        <local:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
         <Style x:Key="IconButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="IconCircleButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
+
     <Grid>
-      
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="50">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -32,39 +45,37 @@
             </Grid.ColumnDefinitions>
             <TextBlock Text="Appolina Shop" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White"/>
             <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-               
-                <Button Style="{StaticResource IconButtonStyle}">
-                   <!--<Image Source="user_icon.png" Width="20" Height="20" />-->
+                <Button Style="{StaticResource IconCircleButtonStyle}">
+                    <Border Width="50" Height="50" BorderBrush="Transparent" BorderThickness="2" Background="Transparent">
+                        <Grid>
+                            <Grid.Clip>
+                                <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25" />
+                            </Grid.Clip>
+                            <Image Source="{Binding PhotoPath}" Stretch="UniformToFill" />
+                        </Grid>
+                    </Border>
                 </Button>
-               
                 <Button Style="{StaticResource IconButtonStyle}">
                     <materialDesign:PackIcon Kind="CardsHeartOutline" Width="40" Height="30" Foreground="White" />
                 </Button>
-              
                 <Button Style="{StaticResource IconButtonStyle}">
                     <materialDesign:PackIcon Kind="CartOutline" Width="40" Height="30" />
                 </Button>
-                
                 <Button Style="{StaticResource IconButtonStyle}">
                     <materialDesign:PackIcon Kind="LogoutVariant" Width="40" Height="30"/>
                 </Button>
             </StackPanel>
         </Grid>
 
-       
         <StackPanel Orientation="Vertical" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0">
-           
-            <Button Style="{StaticResource IconButtonStyle}" >
-                <materialDesign:PackIcon Kind="FormatListBulleted"  Width="30" Height="50" />
+            <Button Style="{StaticResource IconButtonStyle}">
+                <materialDesign:PackIcon Kind="FormatListBulleted" Width="30" Height="50" />
             </Button>
         </StackPanel>
 
         <!-- Search Bar -->
-
-        <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" Margin="180,70,0,0">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="180,70,0,0">
             <TextBox Width="400" Height="30" Margin="0,0,10,0" />
-
-
             <Button Width="30" Height="30" Style="{StaticResource IconButtonStyle}">
                 <materialDesign:PackIcon Kind="Magnify" Width="20" Height="20"/>
             </Button>
@@ -74,51 +85,6 @@
         </StackPanel>
 
 
-        <Grid>
-         
-            <ListView ItemsSource="{Binding Products}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,120,0,0"
-              ScrollViewer.HorizontalScrollBarVisibility="Auto"
-              ScrollViewer.VerticalScrollBarVisibility="Auto">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        
-                        <UniformGrid Columns="3" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Width="200" Height="300" Background="LavenderBlush" Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <Image Source="{Binding Photo.Bytes, Converter={StaticResource ByteArrayToImageConverter}}"
-                           Width="200" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Margin="0,20,0,0"/>
-
-                            <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30"
-                            Margin="10" Style="{StaticResource IconButtonStyle}">
-                                <materialDesign:PackIcon Kind="CardsHeartOutline" Width="20" Height="20" />
-                            </Button>
-                           
-
-                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,10" Orientation="Horizontal">
-                                <TextBlock Text="{Binding Name}" Background="White" Padding="5,2" Margin="0,0,5,0"></TextBlock>
-                                <TextBlock Text="{Binding Price}" Background="White" Padding="5,2" Margin="0,0,5,0"/>
-                                <Button Style="{StaticResource IconButtonStyle}">
-                                    <materialDesign:PackIcon Kind="CartOutline" Foreground="MediumPurple" Width="40" Height="30" />
-                                </Button>
-                               
-                            </StackPanel>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-
-
-
+        <Frame x:Name="ContentFrame" Content="{Binding CurrentPage}" Margin="60,120,30,30" NavigationUIVisibility="Hidden"  />
     </Grid>
 </Window>

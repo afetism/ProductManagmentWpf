@@ -1,4 +1,5 @@
-﻿using ProductManagmentAdminPanel.Services;
+﻿using ProductManagmentUser.Services;
+using ProductManagmentUser.Services;
 using ProductManagmentUser.ViewModels;
 using ProductManagmentUser.Views;
 using System.Windows;
@@ -26,7 +27,8 @@ public partial class App : Application
 	{
 		Container.RegisterSingleton<MainViewModel>();
 		Container.RegisterSingleton<RegisterViewModel>();
-		Container.RegisterSingleton<MainUserPanelViewModel>();
+		Container.RegisterSingleton<AllProductsViewModel>();
+		//Container.RegisterSingleton<MainUserPanelViewModel>();
 
 	}
 
@@ -34,7 +36,10 @@ public partial class App : Application
 	{
 		
          Container.RegisterSingleton<RegisterWindow>();
-		 Container.RegisterSingleton<MainUserPanelView>();
+		Container.RegisterSingleton<AllProductsView>();
+		//Container.RegisterSingleton<MainUserPanelView>();
+
+
 	}
 	protected override void OnStartup(StartupEventArgs e)
 	{

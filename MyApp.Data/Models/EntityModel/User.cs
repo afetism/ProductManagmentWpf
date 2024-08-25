@@ -11,7 +11,7 @@ public class User:BaseEntity
 
     public virtual IEnumerable<Order>? History { get; } = [];
     public byte[] Password { get; set; } = null!;
-   
+    public virtual PhotoUser? PhotoUs { get; set; }
 	public virtual IEnumerable<CreditCard>? CreditCards { get; } = [];
 
 }

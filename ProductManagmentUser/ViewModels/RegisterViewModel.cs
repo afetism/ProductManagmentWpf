@@ -1,5 +1,5 @@
 ﻿using ProductManagmentAdminPanel.Helpers;
-using ProductManagmentAdminPanel.Services;
+using ProductManagmentUser.Services;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -13,6 +13,7 @@ namespace ProductManagmentUser.ViewModels;
 public class RegisterViewModel :BaseViewModel
 {
 	public Action CloseAction { get; set; }
+	
 	public  ICommand OpenPopupCommand { get; set; }
 	public  RelayCommand VerifyCodeCommand { get; set; }
 	public  ICommand CloseVerificationPopupCommand { get; set; }
@@ -185,17 +186,16 @@ public class RegisterViewModel :BaseViewModel
 	private void ExecuteLogin(object parameter)
 	{
 		var passwordManager=new PasswordManager();
-		var user = UserDb.Get(e => e.Email==Email);
-		 if(user is not null && passwordManager.VerifyPassword(user.Password,Password))
+		 UserData = UserDb.Get(e => e.Email==Email);
+		 if(UserData is not null && passwordManager.VerifyPassword(UserData.Password,Password))
 		{
-			CloseAction();
-
-			MainUserPanelView page = App.Container.GetInstance<MainUserPanelView>();
-			page.ShowDialog();
+			var userView = new MainUserPanelView();
+		
+			userView.Show();
 		}
 		else
 		{
-
+			UserData=null;
 			MessageBox.Show("can not find user");
 		}
 

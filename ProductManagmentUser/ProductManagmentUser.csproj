@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\no-image-icon-23479.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\no-image-icon-23479.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
 
 	  <PackageReference Include="SimpleInjector" Version="5.4.6" />
